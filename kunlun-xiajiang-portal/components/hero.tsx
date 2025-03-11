@@ -163,10 +163,12 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex flex-col sm:flex-row gap-4"
+            id="start"
           >
             <Button
               size="lg"
               className="gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 border-0 text-white font-medium shadow-lg shadow-cyan-500/20"
+              onClick={() => window.open('https://xz.klszkj.com:9000/botapi/chat/0OBx-3BBw5Tr3Ep7rqqFfk', '_blank')}
             >
               开始使用 <ArrowRight className="h-4 w-4" />
             </Button>
@@ -174,6 +176,7 @@ export function Hero() {
               size="lg"
               variant="outline"
               className="border-cyan-400/30 text-cyan-300 hover:bg-slate-800/50 hover:text-cyan-200 hover:border-cyan-400/50 font-medium"
+              onClick={() => window.open('https://nipj5983sr.fklzl.cnpc.com.cn/wiki/UkWWwkF2JiRssLknrxMgd4APt1c', '_blank')}
             >
               了解更多
             </Button>
@@ -184,6 +187,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative w-full max-w-5xl mt-8"
+            id="demo"
           >
             <div className="absolute -inset-1 rounded-2xl blur-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 opacity-30"></div>
             <div className="relative rounded-xl overflow-hidden shadow-2xl border border-slate-700/50">

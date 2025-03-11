@@ -157,6 +157,7 @@ export function ModulesSection() {
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-16 text-center"
+          id="solutions"
         >
           <div className="inline-block">
             <div className="relative">

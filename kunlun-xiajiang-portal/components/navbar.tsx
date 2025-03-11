@@ -37,20 +37,23 @@ export function Navbar() {
           <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
             昆仑小疆
           </span>
-          <span className="hidden md:inline-block text-sm text-slate-400">智能体</span>
+          <span className="hidden md:inline-block text-sm text-slate-400">AI智能体</span>
         </div>
 
         <nav className="hidden md:flex items-center gap-6">
           <Link href="#" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
             首页
           </Link>
-          <Link href="#modules" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
-            功能模块
+          <Link href="#start" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+            功能演示
           </Link>
-          <Link href="#" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+          <Link href="#modules" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+            六大模块
+          </Link>
+          <Link href="#solutions" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
             解决方案
           </Link>
-          <Link href="#" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+          <Link href="#about" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
             关于我们
           </Link>
         </nav>
@@ -59,10 +62,14 @@ export function Navbar() {
           <Button
             variant="outline"
             className="hidden md:flex border-cyan-500/30 text-cyan-300 hover:bg-slate-800/50 hover:text-cyan-200 hover:border-cyan-500/50 transition-all duration-300"
+            onClick={() => window.open('https://xz.klszkj.com:9000/chat/conversation/chat/1890311316721700864', '_blank')}
           >
             登录
           </Button>
-          <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 border-0 text-white font-medium shadow-lg shadow-cyan-500/20">
+          <Button 
+            className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 border-0 text-white font-medium shadow-lg shadow-cyan-500/20"
+            onClick={() => window.open('https://xz.klszkj.com:9000/botapi/chat/0OBx-3BBw5Tr3Ep7rqqFfk', '_blank')}
+          >
             立即体验
           </Button>
           <Button variant="ghost" size="icon" className="md:hidden text-slate-300 hover:text-white">

@@ -1,2 +1,4 @@
 node_modules/
 public/hero.mp4
+.next/
+out/
