@@ -53,6 +53,13 @@ export function Navbar() {
           <Link href="#solutions" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
             解决方案
           </Link>
+          <Link 
+            href="http://bbs.asstar.net/" 
+            className="text-sm font-medium text-slate-300 hover:text-white transition-colors"
+            target="_blank"
+          >
+            昆仑社区
+          </Link>
           <Link href="#about" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
             关于我们
           </Link>
