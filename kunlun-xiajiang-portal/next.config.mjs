@@ -1,48 +1,15 @@
-let userConfig = undefined
-try {
-  userConfig = await import('./v0-user-next.config')
-} catch (e) {
-  // ignore error
-}
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
+  output: 'export',  // 启用静态导出
   images: {
-    unoptimized: true,
+    unoptimized: true, // 静态导出时需要禁用图像优化
   },
-  experimental: {
-    webpackBuildWorker: true,
-    parallelServerBuildTraces: true,
-    parallelServerCompiles: true,
-  },
-}
+  // 如果您的网站不是部署在域名根目录，可以设置basePath
+  // basePath: '/kunlun-xiajiang',
+  
+  // 如果您需要支持静态导出的同时使用trailingSlash
+  trailingSlash: true,
+};
 
-mergeConfig(nextConfig, userConfig)
+export default nextConfig;
 
-function mergeConfig(nextConfig, userConfig) {
-  if (!userConfig) {
-    return
-  }
-
-  for (const key in userConfig) {
-    if (
-      typeof nextConfig[key] === 'object' &&
-      !Array.isArray(nextConfig[key])
-    ) {
-      nextConfig[key] = {
-        ...nextConfig[key],
-        ...userConfig[key],
-      }
-    } else {
-      nextConfig[key] = userConfig[key]
-    }
-  }
-}
-
-export default nextConfig

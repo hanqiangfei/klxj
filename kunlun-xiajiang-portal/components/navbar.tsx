@@ -37,7 +37,7 @@ export function Navbar() {
           <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
             昆仑小疆
           </span>
-          <span className="hidden md:inline-block text-sm text-slate-400">AI大模型</span>
+          <span className="hidden md:inline-block text-sm text-slate-400">智能体</span>
         </div>
 
         <nav className="hidden md:flex items-center gap-6">

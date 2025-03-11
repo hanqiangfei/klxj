@@ -26,7 +26,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li>
                 <Link href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">
-                  大区智能助手
+                  新疆大区智能助手
                 </Link>
               </li>
               <li>
@@ -74,7 +74,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-slate-500">© 2025 昆仑小疆 AI大模型. 保留所有权利.</p>
+          <p className="text-sm text-slate-500">© 2025 昆仑数智责任有限公司新疆大区. 保留所有权利.</p>
           <div className="flex items-center gap-4 mt-4 md:mt-0">
             <Link href="#" className="text-sm text-slate-500 hover:text-cyan-400 transition-colors">
               隐私政策

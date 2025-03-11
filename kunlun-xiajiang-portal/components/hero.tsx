@@ -1,12 +1,46 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
-import { useEffect, useRef } from "react"
+import { ArrowRight, Volume2, VolumeX } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 
 export function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [isMuted, setIsMuted] = useState(true)
+  const [videoLoaded, setVideoLoaded] = useState(false)
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted
+      setIsMuted(!isMuted)
+    }
+  }
+
+  // 处理视频加载
+  const handleVideoLoad = () => {
+    setVideoLoaded(true)
+  }
+
+  useEffect(() => {
+    // 确保视频元素存在
+    if (videoRef.current) {
+      // 如果视频已经有了足够的数据可以播放
+      if (videoRef.current.readyState >= 2) {
+        setVideoLoaded(true)
+      } else {
+        // 否则监听loadeddata事件
+        videoRef.current.addEventListener("loadeddata", handleVideoLoad)
+      }
+    }
+
+    return () => {
+      if (videoRef.current) {
+        videoRef.current.removeEventListener("loadeddata", handleVideoLoad)
+      }
+    }
+  }, [])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -155,21 +189,49 @@ export function Hero() {
             <div className="relative rounded-xl overflow-hidden shadow-2xl border border-slate-700/50">
               <div className="aspect-video bg-slate-800 flex items-center justify-center">
                 <div className="w-full h-full relative">
-                  <img
-                    src="/placeholder.svg?height=720&width=1280"
-                    alt="昆仑小疆AI大模型展示"
-                    className="object-cover w-full h-full opacity-80"
+                  {/* 使用静态视频文件路径 */}
+                  <video
+                    ref={videoRef}
+                    src="/hero.mp4" // 确保在public/video目录下有此文件
+                    className="object-cover w-full h-full"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    onLoadedData={handleVideoLoad}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent flex items-end">
-                    <div className="p-6 text-white text-left">
+
+                  {/* 视频加载前显示占位图 */}
+                  {!videoLoaded && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-slate-800">
+                      <div className="w-10 h-10 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin"></div>
+                    </div>
+                  )}
+
+                  {/* Sound control button */}
+                  <button
+                    onClick={toggleMute}
+                    className="absolute top-4 right-4 z-20 bg-slate-800/80 hover:bg-slate-700/80 p-3 rounded-full backdrop-blur-sm border border-cyan-500/30 transition-all duration-300 hover:scale-110 hover:border-cyan-400/50 group"
+                    aria-label={isMuted ? "Unmute video" : "Mute video"}
+                  >
+                    <div className="absolute inset-0 rounded-full bg-cyan-500/20 group-hover:bg-cyan-500/30 animate-pulse"></div>
+                    {isMuted ? (
+                      <VolumeX className="h-6 w-6 text-cyan-300" />
+                    ) : (
+                      <Volume2 className="h-6 w-6 text-cyan-300" />
+                    )}
+                  </button>
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent flex items-end justify-end">
+                    <div className="p-6 text-white text-right">
                       <p className="text-lg font-medium text-cyan-300">智能大模型，无限可能</p>
-                      <p className="text-sm text-blue-100/70">基于先进技术，为各行业提供智能解决方案</p>
+                      <p className="text-sm text-blue-100/70">基于先进技术，为油气行业提供智能解决方案</p>
                     </div>
                   </div>
 
                   {/* Tech elements overlay */}
                   <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-                    <div className="absolute top-4 right-4 w-24 h-24 border border-cyan-500/30 rounded-full animate-ping opacity-20"></div>
+                    <div className="absolute top-4 left-4 w-24 h-24 border border-cyan-500/30 rounded-full animate-ping opacity-20"></div>
                     <div className="absolute bottom-16 left-8 w-16 h-16 border border-blue-400/20 rounded-full animate-pulse opacity-30"></div>
                     <div className="absolute top-1/3 left-1/4 w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
                     <div className="absolute top-1/4 right-1/3 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
